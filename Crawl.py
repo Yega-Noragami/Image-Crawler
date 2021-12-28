@@ -1,3 +1,5 @@
+
+# FINAL VESION , JUST ADD TO POSES_NAME AND GOOGLE_IMAGES TO DOWNLOAD IMAGES FORM GOOGLE 
 import os
 import json 
 import requests
@@ -32,14 +34,25 @@ def setUpDriver():
         
     IMAGE_PATH= os.path.join(CURRENT_PATH , "Images")
 
+
+    exerciseDict = {
+                "Butterfly_Pose":"https://www.google.com/search?q=Butterfly+pose&sxsrf=AOaemvJITSz5XEpPNCgY16rc7QmYM2eBrQ:1639541280845&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjji46d9-T0AhWLPZQKHWuQDVMQ_AUoAXoECCAQAw&biw=895&bih=1076&dpr=0.9",
+                "Bridge_Pose":"https://www.google.com/search?q=Bridge+pose&tbm=isch&ved=2ahUKEwj47vul9-T0AhVZAKYKHetNDooQ2-cCegQIABAA&oq=Bridge+pose&gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgjEO8DECc6BggAEAcQHlCXC1jmGmC-HGgBcAB4AIABXogB8wKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=M2q5YbiJGdmAmAXrm7nQCA&bih=1076&biw=895",
+                    }
+
+
     # Call downloadFromChrome for each set of images and links 
-    POSES_NAME = ["Name-1" , "Name-2" , "Name-3"]
-    GOOGLE_IMAGES = ["GoogleSearchLink-1", "GoogleSearchLink-1", "GoogleSearchLink-3"]
+    
 
     print("Image Directory and path : ", IMAGE_PATH)
 
-    for i in range(len(POSES_NAME)):
-        downloadImagesFromChrome(driver , POSES_NAME[i], GOOGLE_IMAGES[i] , IMAGE_PATH)
+    for key in exerciseDict:
+        # print(key,":", exerciseDict[key])
+        downloadImagesFromChrome(driver, key, exerciseDict[key], IMAGE_PATH)
+
+    # Depreciated 
+    # for i in range(len(POSES_NAME)):
+        # downloadImagesFromChrome(driver , POSES_NAME[i], GOOGLE_IMAGES[i] , IMAGE_PATH)
 
 # Function which is responsible for downloading images from the provided hyperlink 
 def downloadImagesFromChrome(driver , POSES_NAME , GOOGLE_IMAGES , IMAGE_PATH):
