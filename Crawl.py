@@ -91,6 +91,7 @@ def downloadImagesFromChrome(driver , POSES_NAME , GOOGLE_IMAGES , IMAGE_PATH):
                             urllib.request.urlretrieve(image.get_attribute('src'), POSES_NAME + str(counter)+'.jpeg')
                         counter += 1
 
+                        # Set how many images you want to be installed into each category 
                         if counter ==50:
                             return 
                     except:
